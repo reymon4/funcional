@@ -1,0 +1,74 @@
+SENTENCIAS			(if, for, switch, while)	
+					sentencias que no son asignables a variables	
+EXPRESIONES 		(2+3, a<b)
+					son expresiones que se pueden guardar en una variable
+					
+***********************************************************************************************
+NOTA: para eliminar los problemas de las sentencias (almenos del IF) se usa TERNARIOS
+***********************************************************************************************
+OPERACIONES CON LISTAS 
+	SUMA:			la suma es una operacion especial cuando la lista es NUMERICA
+	MULTI:			lo mismo que la suma todo en terminos de cabecera y cola
+	saco la cabecera y hago algo con la cola XD
+	
+	
+FUNCIONES CON VARIOS ARGUMENTOS (POLYMORFICAS):	
+	f: A -> B
+	g: C -> D
+	Se puede definir interfaces para automatizar la firma de las funciones 
+	BINARY OPERATOR:	Funcion<T,Funcion<T,T>>
+
+FUNCION DE ORDEN SUPERIOR:
+	Funcion que toma como argumento otra funcion y retorna otra funcion
+	
+COMPOSICION:
+	f(x) 	= 3 x
+	g(x) 	= x^2
+	fog(x) 	= 9 x^2 	
+	Function <Function <Int , Int> , Function < Function <Function <Int , Int> , Function <Int , Int>>>>
+	          --------------------              ------------------------------    ------------------
+	                  f                                       g                          fog
+	               
+	=>  F<F<I,I>,F<F<I,I>,F<I,I>>> comp = f -> g -> -> x -> f.aply(g.aply(x))
+	
+	
+FUNCIONES POLIMORFICAS DE ORDEN SUPERIOR
+	es la union de las anteriores vistas 
+		f: B -> C
+		g: A -> B
+		
+		para (f o g): A -> C, f(g(x))
+		
+	Firma de la Composicion :  	comp.aply(f).aply(g);
+								f -> g -> x -> g(f(x))
+	entonces 	F<F<A,B>, F<F<B,C>, F<A,C>>>  para g(f(x))
+				F<F<B,C>, F<F<A,B>, F<A,C>>>  para f(g(x))
+***********************************************************************************************
+NOTA:	no funciona simplemente cambiando el orden de las funciones (parametros), que reciben
+		se necesita que los espacios coincidan, cuando esten definidas dentro del conjunto de salida
+		
+		Los genericos no Funcionan con variables solo con metodos
+***********************************************************************************************
+DICHO EN PALABRAS SIMPLES, SI QUIERO REALIZAR FOG(X)= g(f(x)), debemos considerar que el dominio de 
+g debe ser el mismo (A) grupo de salida de f.
+      
+	g: |B| -> C
+	f: A -> |B|
+	
+	
+----------------------FUNCIONES ANÓNIMAS-------------------------------
+Tiene una función similar a las clases anónimas; se usa solo una vez. ----> DE PREFERENCIA USAR FUNCIONES ANÓNIMAS
+No necesito declarar la función.
+Entonces, podemos componer una función de la siguiente manera:
+	
+	Function.compose(x-> Math.PI/2-x, Math::sin);
+					-------------      --------
+						  f				   g
+Usamos el lambda cuando la implementación es "corta". Cuando es muy extensa
+la implementación, creo esto en un método y hago referencia a este con "::"
+
+----------------------FUNCIONES LOCALES-------------------------------
+Esto se refiere a usar una función dentro de una función.
+
+
+ 
